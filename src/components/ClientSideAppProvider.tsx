@@ -7,7 +7,6 @@ import { useServerInsertedHTML } from "next/navigation";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import pt_BR from "antd/locale/pt_BR";
 import { darkTheme, lightTheme } from "@/utils/Theme";
-
 import { ServerStyleSheet, StyleSheetManager } from "styled-components";
 import { useChangeThemeController } from "@/stores/useChangeThemeController";
 
@@ -29,13 +28,13 @@ export const ClientSideAppProvider: React.FC<{ children: React.ReactNode }> = ({
   });
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ConfigProvider
-        locale={pt_BR}
-        theme={{
-          token: isChangeTheme ? lightTheme : darkTheme,
-        }}
-      >
+    <ConfigProvider
+      locale={pt_BR}
+      theme={{
+        token: isChangeTheme ? lightTheme : darkTheme,
+      }}
+    >
+      <QueryClientProvider client={queryClient}>
         {typeof window === "undefined" ? (
           <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
             {children as React.ReactChild}
@@ -43,8 +42,9 @@ export const ClientSideAppProvider: React.FC<{ children: React.ReactNode }> = ({
         ) : (
           <>{children}</>
         )}
-      </ConfigProvider>
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </ConfigProvider>
   );
 };

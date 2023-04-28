@@ -1,5 +1,3 @@
-import { AliasToken } from "antd/es/theme/internal";
-
 export const darkTheme = {
   colorPrimary: "#3888FF",
   colorTextBase: "#FFFFFF",

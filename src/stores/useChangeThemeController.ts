@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 interface useChangeThemeState {
   isChangeTheme: boolean;
@@ -6,10 +7,13 @@ interface useChangeThemeState {
   changeThemeLight: () => void;
 }
 
-export const useChangeThemeController = create<useChangeThemeState>()(
-  (set) => ({
-    isChangeTheme: false,
-    changeThemeDark: () => set({ isChangeTheme: false }),
-    changeThemeLight: () => set({ isChangeTheme: true }),
-  })
+export const useChangeThemeController = create(
+  persist<useChangeThemeState>(
+    (set) => ({
+      isChangeTheme: false,
+      changeThemeDark: () => set({ isChangeTheme: false }),
+      changeThemeLight: () => set({ isChangeTheme: true }),
+    }),
+    { name: "@portifoliogustavodev:theme" }
+  )
 );

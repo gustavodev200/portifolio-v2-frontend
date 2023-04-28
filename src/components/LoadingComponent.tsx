@@ -1,5 +1,4 @@
 import "@/styles/Loading.css";
-import Image from "next/image";
 
 export const LoadingComponent = () => {
   return (

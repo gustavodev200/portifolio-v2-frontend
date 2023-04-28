@@ -2,8 +2,7 @@
 
 import { Home } from "@/components/Home";
 import { NavBar } from "@/components/NavBar";
-import { useChangeThemeController } from "@/stores/useChangeThemeController";
-import { Button, theme } from "antd";
+import { theme } from "antd";
 import styled from "styled-components";
 
 export default function Page() {

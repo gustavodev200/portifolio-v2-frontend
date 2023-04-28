@@ -33,6 +33,7 @@ export const NavBar = () => {
               onClick={isChangeTheme ? changeThemeDark : changeThemeLight}
               checkedChildren={<MdSunny />}
               unCheckedChildren={<BsFillMoonFill />}
+              defaultChecked={isChangeTheme}
             />
           </li>
         </LinksContainer>
